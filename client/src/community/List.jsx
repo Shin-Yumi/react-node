@@ -17,7 +17,7 @@ function List() {
 
 	useEffect(() => {
 		axios
-			.post('/api/community/read')
+			.get('/api/community/read/0')
 			.then((res) => {
 				if (res.data.success) {
 					setList(res.data.communityList);
@@ -38,6 +38,7 @@ function List() {
 						<h2>
 							<Link to={`/detail/${post.communityNum}`}>{post.title}</Link>
 						</h2>
+						<span>작성자: {post.writer.displayName}</span>
 					</Item>
 				);
 			})}

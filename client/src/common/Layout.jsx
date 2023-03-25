@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 const MainWrap = styled.main`
-	width: calc(100% - 350px);
+	width: 100%;
 	min-height: 100vh;
-	float: right;
 
 	> .inner {
 		width: 100%;
