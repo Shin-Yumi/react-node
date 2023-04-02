@@ -11,9 +11,16 @@ const Login = styled.div`
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	.inner {
+		width: 80%;
+		border: 1px solid #ddd;
+		padding: 50px 30px;
+	}
 `;
 const BtnSet = styled.div`
 	display: flex;
+	justify-content: flex-end;
+	width: 100%;
 	gap: 20px;
 	margin-top: 20px;
 `;
@@ -40,14 +47,16 @@ function Loign() {
 	return (
 		<Layout name={'Login'}>
 			<Login>
-				<input type='email' value={Email} placeholder='이메일 주소를 입력하세요.' onChange={(e) => setEmail(e.target.value)} />
-				<input type='password' value={Pwd} placeholder='비밀번호를 입력하세요.' onChange={(e) => setPwd(e.target.value)} />
+				<div className='inner'>
+					<input type='email' value={Email} placeholder='이메일 주소를 입력하세요.' onChange={(e) => setEmail(e.target.value)} />
+					<input type='password' value={Pwd} placeholder='비밀번호를 입력하세요.' onChange={(e) => setPwd(e.target.value)} />
 
-				<BtnSet>
-					<button onClick={handleLogin}>로그인</button>
-					<button onClick={() => navigate('/join')}>회원가입</button>
-				</BtnSet>
-				{Err !== '' && <p>{Err}</p>}
+					<BtnSet>
+						<button onClick={handleLogin}>로그인</button>
+						<button onClick={() => navigate('/join')}>회원가입</button>
+					</BtnSet>
+					{Err !== '' && <p>{Err}</p>}
+				</div>
 			</Login>
 		</Layout>
 	);

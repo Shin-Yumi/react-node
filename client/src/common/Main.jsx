@@ -25,11 +25,11 @@ const Util = styled.ul`
 		color: #ddd;
 		cursor: pointer;
 		a {
-			font: 10px/1 'arial';
+			font: 12px/1 'arial';
 			color: #ddd;
 		}
 		> p {
-			font: 10px/1 'arial';
+			font: 12px/1 'arial';
 			color: #ddd;
 		}
 	}

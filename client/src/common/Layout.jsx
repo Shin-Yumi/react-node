@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const MainWrap = styled.main`
-	width: 75%;
+	width: 100%;
 	padding-left: 25%;
 	height: 100vh;
 	min-height: 100vh;
@@ -10,13 +10,9 @@ const MainWrap = styled.main`
 		width: 100%;
 		height: 100%;
 
-		h1 {
-			font: normal 40px/1 'arial';
-			color: #333;
-			margin-bottom: 30px;
-		}
-
 		section {
+			width: 100%;
+			height: 100%;
 			label {
 				display: block;
 				font: 16px/1 'arial';
@@ -27,23 +23,28 @@ const MainWrap = styled.main`
 			input[type='password'],
 			input[type='email'],
 			textarea {
-				width: 50%;
+				width: 100%;
 				min-width: 300px;
-				padding: 5px 8px;
-				border: 1px solid #999;
+				padding: 10px;
+				border: 1px solid #333;
 				margin-bottom: 20px;
 				resize: none;
 				display: block;
+				background: rgba(0,0,0,.2);
+				&::placeholder {
+					font-size: 12px;
+					color: #ddd;
+				}
 			}
 			button {
 				display: inline-block;
 				padding: 5px 20px;
-				background: #555;
-				color: #fff;
+				background: rgba(0,0,0,.2);
+				color: #ddd;
 				border: none;
 				cursor: pointer;
 				a {
-					color: #fff;
+					color: #ddd;
 				}
 			}
 		}
@@ -54,8 +55,6 @@ function Layout({ children, name }) {
 	return (
 		<MainWrap className={`content ${name}`}>
 			<div className='inner'>
-				<h1>{name}</h1>
-
 				<section>{children}</section>
 			</div>
 		</MainWrap>
