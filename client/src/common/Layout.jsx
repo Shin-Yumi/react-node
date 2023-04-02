@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 const MainWrap = styled.main`
-	width: 100%;
+	width: 75%;
+	padding-left: 25%;
+	height: 100vh;
 	min-height: 100vh;
 
 	> .inner {
 		width: 100%;
-		padding: 60px;
+		height: 100%;
 
 		h1 {
 			font: normal 40px/1 'arial';

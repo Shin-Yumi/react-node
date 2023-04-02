@@ -1,110 +1,63 @@
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import firebase from '../firebase';
 import styled from 'styled-components';
 
 const HeaderWrap = styled.header`
-	width: 100%;
+	width: 25%;
+	height: 100vh;
 	background: transparent;
 	position: fixed;
 	top: 0;
 	left: 0;
-`;
-
-const HeaderTop = styled.div`
-	width: 100%;
-	padding: 10px;
-	display: flex;
-	justify-content: flex-end;
-	border-bottom: 1px solid #ddd;
-`;
-
-const Util = styled.ul`
-	display: flex;
-	gap: 20px;
-	
-	li {
-		color: #ddd;
-		cursor: pointer;
-		a {
-			font: 10px/1 'arial';
-			color: #ddd;
-		}
-		> p {
-			font: 10px/1 'arial';
-			color: #ddd;
-		}
-	}
-`;
-
-const HeaderBottom = styled.div`
+	padding: 10vh 5vw;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	padding: 10px;
+	flex-direction: column;
 `;
 
 const Logo = styled.h1`
+text-align: center;
 	a {
-		font: 40px/1 'arial';
+		display: block;
+		width: 60px;
+		height: 60px;
+		color: #fff;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	>p {
+		padding-top: 10px;
+		font-size: 16px;
 		color: #fff;
 	}
 `;
 
 const Gnb = styled.ul`
-	display: flex;
-	align-items: center;
+width: 100%;
 	a {
 		display: block;
-		padding: 10px;
-		font: bold 16px/1 'arial';
 		color: #bbb;
 	}
 `;
 
+
 function Header() {
-	const navigate = useNavigate();
+
 	const user = useSelector((store) => store.user);
 	const activeStyle = { color: '#ddd' };
 
 	return (
 		<HeaderWrap>
-			<HeaderTop>
-				{/* 로그인 유무에 따라 로그인 메뉴 및 인사메세지 분기처리 */}
-				{user.uid === '' ? (
-					<Util>
-						<li>
-							<NavLink to='/login' style={({ isActive }) => (isActive ? activeStyle : null)}>
-								Login
-							</NavLink>
-						</li>
-						<li>
-							<NavLink to='/join' style={({ isActive }) => (isActive ? activeStyle : null)}>
-								Join
-							</NavLink>
-						</li>
-					</Util>
-				) : (
-					<Util>
-						<li>
-							<p>{`${user.displayName}님 반갑습니다.`}</p>
-						</li>
-
-						<li
-							onClick={() => {
-								firebase.auth().signOut();
-								alert('로그아웃 되었습니다. 메인페이지로 이동합니다.');
-								navigate('/');
-							}}
-						>
-							<p>로그아웃</p>
-						</li>
-					</Util>
-				)}
-			</HeaderTop>
-			<HeaderBottom>
-				<Logo>
-					<Link to='/'>Board</Link>
+			<Logo>
+					<Link to='/'>
+						<img src={process.env.PUBLIC_URL + 'logo.svg'} alt="" />
+						
+					</Link>
+					<p>CRUD board</p>
 				</Logo>
 				<Gnb>
 					<li>
@@ -121,7 +74,7 @@ function Header() {
 						</li>
 					)}
 				</Gnb>
-			</HeaderBottom>
+			
 		</HeaderWrap>
 	);
 }
