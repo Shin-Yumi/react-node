@@ -5,6 +5,20 @@ import firebase from '../firebase';
 import styled from 'styled-components';
 import axios from 'axios';
 
+const Login = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	.inner {
+		width: 80%;
+		border: 1px solid #ddd;
+		padding: 50px 30px;
+	}
+`;
+
 const BtnSet = styled.div`
 	margin-top: 20px;
 	display: flex;
@@ -40,14 +54,18 @@ function Join() {
 
 	return (
 		<Layout name={'Join'}>
-			<input type='email' value={Email} placeholder='이메일 주소를 입력하세요.' onChange={(e) => setEmail(e.target.value)} />
-			<input type='password' value={Pwd1} placeholder='비밀번호를 입력하세요.' onChange={(e) => setPwd1(e.target.value)} />
-			<input type='password' value={Pwd2} placeholder='비밀번호를 재입력하세요.' onChange={(e) => setPwd2(e.target.value)} />
-			<input type='text' value={Name} placeholder='사용자명을 입력하세요.' onChange={(e) => setName(e.target.value)} />
-			<BtnSet>
-				<button onClick={() => navigate(-1)}>가입취소</button>
-				<button onClick={handleJoin}>회원가입</button>
-			</BtnSet>
+			<Login>
+				<div className='inner'>
+					<input type='email' value={Email} placeholder='이메일 주소를 입력하세요.' onChange={(e) => setEmail(e.target.value)} />
+					<input type='password' value={Pwd1} placeholder='비밀번호를 입력하세요.' onChange={(e) => setPwd1(e.target.value)} />
+					<input type='password' value={Pwd2} placeholder='비밀번호를 재입력하세요.' onChange={(e) => setPwd2(e.target.value)} />
+					<input type='text' value={Name} placeholder='사용자명을 입력하세요.' onChange={(e) => setName(e.target.value)} />
+					<BtnSet>
+						<button onClick={() => navigate(-1)}>가입취소</button>
+						<button onClick={handleJoin}>회원가입</button>
+					</BtnSet>
+				</div>
+			</Login>
 		</Layout>
 	);
 }
