@@ -1,6 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import firebase from '../firebase';
 import styled from 'styled-components';
 
 const HeaderWrap = styled.header`

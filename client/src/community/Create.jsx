@@ -3,6 +3,21 @@ import { useState, useEffect } from 'react';
 import Layout from '../common/Layout';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+
+const Center = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	.inner {
+		width: 80%;
+		border: 1px solid #ddd;
+		padding: 50px 30px;
+	}
+`;
 
 function Create() {
 	const user = useSelector((store) => store.user);
@@ -34,13 +49,17 @@ function Create() {
 
 	return (
 		<Layout name={'Post'}>
-			<label htmlFor='tit'>Title</label>
-			<input type='text' id='tit' value={Tit} onChange={(e) => setTit(e.target.value)} />
-			<br />
-			<label htmlFor='con'>Content</label>
-			<textarea name='cons' id='id' cols='30' rows='3' value={Con} onChange={(e) => setCon(e.target.value)}></textarea>
-			<br />
-			<button onClick={handleCreate}>SEND</button>
+			<Center>
+				<div className='inner'>
+					<label htmlFor='tit'>Title</label>
+					<input type='text' id='tit' value={Tit} onChange={(e) => setTit(e.target.value)} />
+					<br />
+					<label htmlFor='con'>Content</label>
+					<textarea name='cons' id='id' cols='30' rows='3' value={Con} onChange={(e) => setCon(e.target.value)}></textarea>
+					<br />
+					<button onClick={handleCreate}>SEND</button>
+				</div>
+			</Center>
 		</Layout>
 	);
 }
