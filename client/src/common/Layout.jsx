@@ -31,9 +31,13 @@ const MainWrap = styled.main`
 				resize: none;
 				display: block;
 				background: rgba(0,0,0,.2);
+				color: #ddd;
 				&::placeholder {
 					font-size: 12px;
 					color: #ddd;
+				}
+				&:focus {
+					outline: 1px solid #ddd;
 				}
 			}
 			button {
